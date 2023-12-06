@@ -5,8 +5,11 @@ This repository used for store code, managing versions and allow contributing to
 ## Structure 
 
 pybrickslaunch.py - uploading code to PyBricks hub
+
 robot.py - the robot's main code
+
 requirements.txt - specifies the dependencies and packages used in this repotisetiry 
+
 .vscode - folder for integrating the launch code with the visual studio code IDE
 
 ## Usage

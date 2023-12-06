@@ -1,6 +1,6 @@
 # StarBlitz #840 Robot 2023-2024
 
-This repository used for store code, managing versions, allow contributing together for the FLL masterpiece robot challenge
+This repository used for store code, managing versions and allow contributing together for the FLL masterpiece robot challenge
 
 ## Structure 
 

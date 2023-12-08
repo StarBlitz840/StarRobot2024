@@ -1,4 +1,4 @@
-HUB_NAME = "Pybricks Hub"
+HUB_NAME = "Controller4"
 
 import os
 import subprocess
@@ -9,5 +9,6 @@ command = f"pybricksdev run ble --name {HUB_NAME} {target}"
 try:
     subprocess.run(command, shell=True, check=True)
 except subprocess.CalledProcessError:
+    print("beep boop boop beep")
     print("Error uploading code to hub")
-    print("Make sure to set HUB_NAME and turn the hub on")
+    

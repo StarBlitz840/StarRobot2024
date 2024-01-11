@@ -25,17 +25,23 @@ chassis.settings(straight_speed=250)
 
 
 # defining functions
-def go_till_touchin_black(speedy):
-    while sensor_left.color() != Color.BLACK:
-        chassis.straight()
+def go_till_touchin_black(speed, turn_rate):
+    while sensor_left.reflection() > 12:
+        chassis.drive(speed, turn_rate)
+    if sensor_left.reflection() <= 12:
+        print("ching")
 
 
 # go_till_touchin_black(3)
 # code
 # wheel_left.run_time(3000, 1000)
 # wheel_right.run_time(3000, 1000)
-chassis.straight(660)
-chassis.turn(-90)
+# chassis.straight(660)
+go_till_touchin_black(150, 0)
+
+# wait(1000)
+# chassis.drive(100, 0)
+# chassis.turn(-90)
 # chassis.straight(38)
 # smashsigmaskibidi_right.run_time(3000, 2200)
 # chassis.straight(-20)

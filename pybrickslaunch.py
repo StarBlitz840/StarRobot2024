@@ -10,6 +10,6 @@ try:
     subprocess.run(command, shell=True, check=True)
 except subprocess.CalledProcessError:
     print("Error uploading code to hub")
-    print("Make sure the hub i turned on and HUB_NAME is set.")
+    print("Make sure the hub is turned on and HUB_NAME is set.")
     
     

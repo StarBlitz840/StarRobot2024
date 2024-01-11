@@ -1,4 +1,4 @@
-# importing modules
+#importing modules
 from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
@@ -11,7 +11,7 @@ from pybricks.parameters import Port, Direction
 
 hub = PrimeHub()
 
-# setup
+#setup
 
 smash_right = Motor(Port.A)
 smash_left = Motor(Port.D)
@@ -22,28 +22,53 @@ sensor_left = ColorSensor(Port.E)
 chassis = DriveBase(wheel_left, wheel_right, 62.4, 135)
 chassis.use_gyro(True)
 chassis.settings(straight_speed=250)
+chassis.settings(turn_rate=100)
 
 
-# defining functions
-def go_till_touchin_black(speed, turn_rate):
-    while sensor_left.reflection() > 12:
-        chassis.drive(speed, turn_rate)
-    if sensor_left.reflection() <= 12:
-        print("ching")
+#vars
+colors = (Color.BLACK,
+          Color.RED,
+          Color.YELLOW,
+          Color.GREEN,
+          Color.BLUE,
+          Color.WHITE,
+          Color.NONE)
+sensor_left.detectable_colors(colors)
+sensor_right.detectable_colors(colors)
 
+#functions
+def till_black(speed, turn_rate):
+    chassis.drive(speed, turn_rate)
 
-# go_till_touchin_black(3)
-# code
-# wheel_left.run_time(3000, 1000)
-# wheel_right.run_time(3000, 1000)
-# chassis.straight(660)
-go_till_touchin_black(150, 0)
+    while sensor_left.color() != Color.BLACK:
+        print(sensor_left.color())
+        pass
 
+    chassis.stop()
+
+def till_not_black(speed, turn_rate):
+    chassis.drive(speed, turn_rate)
+
+    while sensor_right.color() == Color.BLACK:
+        pass
+
+    chassis.stop()
+
+#code
+# chassis.straight(700, then=Stop.NONE)
+# till_black(150, 0)
 # wait(1000)
-# chassis.drive(100, 0)
 # chassis.turn(-90)
-# chassis.straight(38)
-# smashsigmaskibidi_right.run_time(3000, 2200)
-# chassis.straight(-20)
+# till_not_black(150, 0)
+# smash_right.run_time(3000, 2200)
+# chassis.straight(-80)
 # chassis.turn(-90)
+# chassis.settings(straight_speed=750)
 # chassis.straight(900)
+# chassis.settings(straight_speed=250)
+# smash_right.run_time(-1000, 500)
+
+chassis.straight(800)
+chassis.settings(turn_rate=45)
+chassis.turn(90)
+chassis.settings(turn_rate=100)

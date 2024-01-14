@@ -66,7 +66,7 @@ def till_not_black(speed, turn_rate):
 # chassis.settings(straight_speed=750)
 # chassis.straight(900)
 # chassis.settings(straight_speed=250)
-# smash_right.run_time(-1000, 500)
+
     
 def run_1():
     chassis.settings(straight_speed=250)
@@ -84,10 +84,16 @@ def run_1():
     chassis.settings(straight_speed=250)
 
 # run_1()
-smash_left.run_time(2000, 3000)
+# smash_left.run_time(2000, 3000)
 def forword_and_backwords(thing):
     chassis.straight(thing)
     thing = thing * -1
     chassis.straight(thing)
 
+def duck():
+    smash_left.run_time(1000, 500)
 # dingdon(150)
+# duck()
+    
+# forword_and_backwords(-150)
+# forword_and_backwords(-150)

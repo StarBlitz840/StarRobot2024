@@ -13,12 +13,12 @@ BLACK = 5
 WHITE = 42
 TARGET = 23
 
-smash_right = Motor(Port.A)
-smash_left = Motor(Port.D)
-wheel_right = Motor(Port.E)
-wheel_left = Motor(Port.C, Direction.COUNTERCLOCKWISE)
-sensor_right = ColorSensor(Port.F)
-sensor_left = ColorSensor(Port.B)
+smash_right = Motor(Port.D)
+smash_left = Motor(Port.E)
+wheel_right = Motor(Port.B)
+wheel_left = Motor(Port.F, Direction.COUNTERCLOCKWISE)
+sensor_right = ColorSensor(Port.A)
+sensor_left = ColorSensor(Port.C)
 chassis = DriveBase(wheel_left, wheel_right, 62.4, 135)
 chassis.use_gyro(True)
 chassis.settings(straight_speed=250)
@@ -36,6 +36,14 @@ sensor_left.detectable_colors(colors)
 sensor_right.detectable_colors(colors)
 
 #functions
+def forword_and_backwords(thing):
+    chassis.straight(thing)
+    thing = thing * -1
+    chassis.straight(thing)
+
+def duck():
+    smash_left.run_time(1000, 500)
+
 def till_black(speed, turn_rate):
     chassis.drive(speed, turn_rate)
 
@@ -68,22 +76,11 @@ def follow_line(speed: int, seconds: int, sensor: ColorSensor, side = "right", k
         wheel_left.dc(speed - change)
 
 #code
-# chassis.straight(700, then=Stop.NONE)
-# till_black(150, 0)
-# wait(1000)
-# chassis.turn(-90)
-# till_not_black(150, 0)
-# smash_right.run_time(3000, 2200)
-# chassis.straight(-80)
-# chassis.turn(-90)
-# chassis.settings(straight_speed=750)
-# chassis.straight(900)
-# chassis.settings(straight_speed=250)
-
-
 def run_1():
     chassis.settings(straight_speed=250)
-    chassis.straight(-600)
+    chassis.straight(-300, then=Stop.NONE)
+    chassis.settings(straight_speed=40)
+    chassis.straight(-120)
     chassis.settings(turn_rate=45)
     chassis.turn(90)
     chassis.settings(turn_rate=100)
@@ -95,19 +92,7 @@ def run_1():
 
     chassis.settings(straight_speed=250)
 
-# run_1()
-# smash_left.run_time(2000, 3000)
-def forword_and_backwords(thing):
-    chassis.straight(thing)
-    thing = thing * -1
-    chassis.straight(thing)
 
-def duck():
-    smash_left.run_time(1000, 500)
 
-                                # while "false":
-                                #     print (sensor_right.reflection())
 run_1()
-# forword_and_backwords(-150)
-# forword_and_backwords(-150)
-# follow_line(40, 5, sensor_left, "right", 1.5)
+chassis.straight(1000)

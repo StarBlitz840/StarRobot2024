@@ -1,9 +1,9 @@
 #importing modules
 from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor
-from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.parameters import Color, Direction, Port, Stop
 from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch
+from pybricks.tools import StopWatch
 
 hub = PrimeHub()
 
@@ -79,7 +79,7 @@ def follow_line(speed: int, seconds: int, sensor: ColorSensor, side = "right", k
 def run_1():
     chassis.settings(straight_speed=250)
     chassis.straight(-300, then=Stop.NONE)
-    chassis.settings(straight_speed=40)
+    chassis.settings(straight_speed=50)
     chassis.straight(-120)
     chassis.settings(turn_rate=45)
     chassis.turn(90)
@@ -95,4 +95,3 @@ def run_1():
 
 
 run_1()
-chassis.straight(1000)

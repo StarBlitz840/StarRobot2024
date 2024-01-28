@@ -40,7 +40,7 @@ sensor_right.detectable_colors(colors)
 
 
 # functions
-def forword_and_backwords(thing):
+def rightround(thing):
     chassis.straight(thing)
     thing = thing * -1
     chassis.straight(thing / 2)
@@ -200,7 +200,7 @@ def run_1():
     chassis.straight(-300, then=Stop.NONE)
     chassis.settings(straight_speed=80)
     chassis.straight(-150)
-    chassis.settings(turn_rate=45)
+    chassis.settings(turn_rate=30)
     chassis.turn(90)
     chassis.settings(turn_rate=100)
     chassis.settings(straight_speed=200)
@@ -208,18 +208,20 @@ def run_1():
     chassis.straight(10)
     chassis.turn(30)
     chassis.straight(40)
-    until_black(40, sensor_right, sensor_left, "right")
+    follow_line(30, 0.75, sensor_right, "right")
+    until_black(30, sensor_right, sensor_left, "right")
     chassis.straight(40)
     chassis.turn(-70)
     chassis.settings(straight_speed=100)
     # team miion
     smash_right.run_time(1000, 500)
     chassis.straight(100, then=Stop.NONE)
-    smash_right.run_time(-1000, 500)
+    smash_right.run_time(-1000, 100)
+    chassis.straight(-50)
     chassis.turn(120)
     follow_line(50, 1, sensor_right, "right")
     till_not_black(180, 0)
-    chassis.straight(33)
+    chassis.straight(80)
     chassis.turn(-95)
     smash_left.run_time(3000, 3000)
     chassis.settings(straight_speed=250)
@@ -244,7 +246,7 @@ hub.display.icon(
     ]
 )
 
-
+# rightround(-199)
 run_1()
 s_icon()
 wait(400)

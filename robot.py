@@ -179,7 +179,7 @@ def follow_line(speed: int, seconds: float, sensor: ColorSensor, side="right", k
         wheel_left.dc(speed - change)
 
 
-def until_black(
+def follow_line_until_black(
     speed: int, sensor: ColorSensor, detection_sensor: ColorSensor, side="right", kp=1.5
 ):
     error = sensor.reflection() - TARGET
@@ -200,36 +200,48 @@ def run_1():
     chassis.straight(-300, then=Stop.NONE)
     chassis.settings(straight_speed=80)
     chassis.straight(-150)
+    chassis.straight(10)
     chassis.settings(turn_rate=30)
     chassis.turn(90)
     chassis.settings(turn_rate=100)
     chassis.settings(straight_speed=200)
     till_black(30, 0)
-    chassis.straight(60)
     chassis.turn(30)
-    follow_line(30, 1.99, sensor_right, "right")
-    until_black(30, sensor_left, sensor_left)
+    follow_line(30, 3, sensor_right, "right")
+    follow_line_until_black(30, sensor_left, sensor_left)
     chassis.straight(40)
-    chassis.turn(-80)
+    chassis.turn(-70)
     chassis.settings(straight_speed=100)
     # team miion
     smash_right.run_time(1000, 500)
-    chassis.straight(100, then=Stop.NONE)
-    smash_right.run_time(-1000, 400)
+    chassis.straight(200, then=Stop.NONE)
+    smash_right.run_time(-3000, 400)
     chassis.straight(-50)
     chassis.turn(120)
-    follow_line(50, 1, sensor_right, "right")
+    follow_line(50, 2, sensor_right, "right")
     till_not_black(180, 0)
-    chassis.straight(150)
-    chassis.turn(-95)
-    chassis.straight(10)
-    smash_left.run_time(3000, 3000)
+    chassis.straight(80)
+    smash_left.run_time(-1000, 1000)
+    smash_left.run_time(1000, 3000)
+    chassis.settings(straight_speed=300)
+    chassis.turn(10)
+    chassis.straight(500, then=Stop.NONE)
+    till_black(50, 0)
+    follow_line(40, 5, sensor_right)
+    chassis.straight(400)
     chassis.settings(straight_speed=250)
 
 
 def run_5():
     chassis.straight(500)
     chassis.turn(70)
+
+
+def haratza_tesha():
+    wheel_right.dc(100)
+    wheel_left.dc(100)
+    while "1 + 1 == 3":
+        pass
 
 
 # run_1()
@@ -267,6 +279,7 @@ t_icon()
 wait(400)
 z_icon()
 wait(400)
+# haratza_tesha()
 # smash_right.run_time(3000, 1999)
 # chassis.settings(straight_speed=1000)
 # chassis.straight(-200)

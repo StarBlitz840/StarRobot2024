@@ -5,6 +5,7 @@ from pybricks.parameters import Color, Direction, Port, Stop
 from pybricks.robotics import DriveBase
 from pybricks.tools import StopWatch
 from pybricks.tools import wait
+from pybricks.tools import hub_menu
 
 hub = PrimeHub()
 
@@ -53,7 +54,7 @@ def duck():
 def till_black(speed, turn_rate):
     chassis.drive(speed, turn_rate)
 
-    while sensor_left.color() != Color.BLACK:
+    while sensor_left.reflection() > 9:
         print(sensor_left.color())
         pass
 
@@ -205,36 +206,9 @@ def run_1():
     chassis.turn(90)
     chassis.settings(turn_rate=100)
     chassis.settings(straight_speed=200)
-    till_black(30, 0)
-    chassis.turn(30)
-    follow_line(30, 1.5, sensor_right, "right")
-    follow_line_until_black(30, sensor_right, sensor_left)
-    chassis.straight(40)
-    chassis.turn(-70)
-    chassis.settings(straight_speed=100)
-    # team miion
-    smash_right.run_time(1000, 500)
-    chassis.straight(200, then=Stop.NONE)
-    smash_right.run_time(-3000, 400)
-    chassis.straight(-50)
-    chassis.turn(120)
-    follow_line(50, 2, sensor_right, "right")
-    till_not_black(180, 0)
-    chassis.straight(80)
-    
-    #purple man mission
-    smash_left.run_time(3000, 3000)
-
-    smash_left.run_time(-1000, 1000)
-    smash_left.run_time(1000, 3000)
-    chassis.settings(straight_speed=300)
-    chassis.turn(10)
-    chassis.straight(500, then=Stop.NONE)
     till_black(50, 0)
-    follow_line(40, 5, sensor_right)
-    chassis.straight(400)
-    chassis.settings(straight_speed=250)
-
+    chassis.turn(30)
+    follow_line(50, 2, sensor_right)
 
 def run_5():
     chassis.straight(500)
@@ -287,3 +261,4 @@ wait(400)
 # smash_right.run_time(3000, 1999)
 # chassis.settings(straight_speed=1000)
 # chassis.straight(-200)
+

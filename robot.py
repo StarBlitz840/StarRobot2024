@@ -222,14 +222,15 @@ def run_1():
     follow_line(50, 1, sensor_right, "right")
     till_not_black(180, 0)
     chassis.straight(80)
-    chassis.turn(-95)
+    
+    #purple man mission
     smash_left.run_time(3000, 3000)
     chassis.settings(straight_speed=250)
 
 
 def run_5():
     chassis.straight(500)
-    chassis.turn(70)
+    chassis.turn(-70)
 
 
 # run_1()

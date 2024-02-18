@@ -42,19 +42,25 @@ sensor_right.detectable_colors(colors)
 
 
 # functions
-def to_angle(angle, speed):
-    start_angle = hub.imu.heading()
-    math = angle - start_angle
-    chassis.settings(turn_acceleration=speed)
-    if math < 180 and math > 0:
-        chassis.turn(start_angle + angle)
-    if math > -180 and math < 0:
-        chassis.turn(start_angle - angle)
-    if math > 180 and math > 0:
-        chassis.turn(start_angle - angle)
-    if math < -180 and math < 0:
-        chassis.turn(start_angle + angle)
+# def to_angle(angle, speed):
+#     start_angle = hub.imu.heading()
+#     math = angle - start_angle
+#     chassis.settings(turn_acceleration=speed)
+#     if math < 180 and math > 0:
+#         chassis.turn(start_angle + angle)
+#     if math > -180 and math < 0:
+#         chassis.turn(start_angle - angle)
+#     if math > 180 and math > 0:
+#         chassis.turn(start_angle - angle)
+#     if math < -180 and math < 0:
+#         chassis.turn(start_angle + angle)
 
+def turn_to(angle):
+    start_angle = hub.imu.heading() % 360 #208
+    deg_to_turn = (angle - start_angle) % 360 #242
+    
+
+    
 def rightround(thing):
     chassis.straight(thing)
     thing = thing * -1

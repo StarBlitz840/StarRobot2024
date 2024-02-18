@@ -1,0 +1,27 @@
+
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor
+from pybricks.parameters import Color, Direction, Port, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import StopWatch
+from pybricks.tools import wait
+
+hub = PrimeHub()
+
+# setup
+
+BLACK = 5
+WHITE = 42
+TARGET = 23
+
+smash_right = Motor(Port.D)
+smash_left = Motor(Port.E)
+wheel_right = Motor(Port.B)
+wheel_left = Motor(Port.F, Direction.COUNTERCLOCKWISE)
+sensor_right = ColorSensor(Port.A)
+sensor_left = ColorSensor(Port.C)
+chassis = DriveBase(wheel_left, wheel_right, 62.4, 135)
+
+
+
+chassis.drive(10000)

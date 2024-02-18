@@ -6,7 +6,6 @@ from pybricks.robotics import DriveBase
 from pybricks.tools import StopWatch
 from pybricks.tools import wait
 
-hub = PrimeHub()
 
 # setup
 
@@ -14,6 +13,7 @@ BLACK = 5
 WHITE = 42
 TARGET = 23
 
+hub = PrimeHub()
 smash_right = Motor(Port.D)
 smash_left = Motor(Port.E)
 wheel_right = Motor(Port.B)
@@ -22,6 +22,7 @@ sensor_right = ColorSensor(Port.A)
 sensor_left = ColorSensor(Port.C)
 chassis = DriveBase(wheel_left, wheel_right, 62.4, 135)
 chassis.use_gyro(True)
+hub.imu.reset_heading(0)
 chassis.settings(straight_speed=250)
 chassis.settings(turn_rate=100)
 
@@ -40,6 +41,19 @@ sensor_right.detectable_colors(colors)
 
 
 # functions
+def to_angle(angle, speed):
+    start_angle = hub.imu.heading()
+    math = angle - start_angle
+    chassis.settings(turn_acceleration=speed)
+    if math < 180 and math > 0:
+        chassis.turn(start_angle + angle)
+    if math > -180 and math < 0:
+        chassis.turn(start_angle - angle)
+    if math > 180 and math > 0:
+        chassis.turn(start_angle - angle)
+    if math < -180 and math < 0:
+        chassis.turn(start_angle + angle)
+
 def rightround(thing):
     chassis.straight(thing)
     thing = thing * -1
@@ -58,6 +72,15 @@ def till_black(speed, turn_rate):
         pass
 
     chassis.stop()
+def till_white(speed, turn_rate):
+    chassis.drive(speed, turn_rate)
+
+    while sensor_left.color() != Color.WHITE:
+        print(sensor_left.color())
+        pass
+
+    chassis.stop()
+
 
 
 def till_not_black(speed, turn_rate):
@@ -192,6 +215,10 @@ def follow_line_until_black(
         wheel_right.dc(speed + change)
         wheel_left.dc(speed - change)
 
+def clean_wheels():
+    chassis.drive(720, 0)
+    while "1 + 1 = 3":
+        pass
 
 # code
 def run_1():
@@ -200,34 +227,38 @@ def run_1():
     chassis.straight(-300, then=Stop.NONE)
     chassis.settings(straight_speed=80)
     chassis.straight(-150)
-    chassis.straight(10)
-    chassis.settings(turn_rate=30)
+    chassis.straight(20)
+    chassis.settings(turn_rate=40)
     chassis.turn(90)
     chassis.settings(turn_rate=100)
     chassis.settings(straight_speed=200)
     till_black(30, 0)
     chassis.turn(30)
+    # to team mission
     follow_line(30, 1.99, sensor_right, "right")
     follow_line_until_black(30, sensor_right, sensor_left)
-    chassis.straight(40)
-    chassis.turn(-70)
+    chassis.straight(45)
+    chassis.turn(-45)
     chassis.settings(straight_speed=100)
-    # team miion
-    smash_right.run_time(1000, 500)
+    follow_line(30, 0.4, sensor_right)
+    # team mission
+    smash_right.run_time(1000, 600)
     chassis.straight(200, then=Stop.NONE)
-    smash_right.run_time(-3000, 400)
-    chassis.straight(-50)
-    chassis.turn(120)
-    follow_line(50, 2, sensor_right, "right")
-    till_not_black(180, 0)
-    chassis.straight(80)
-    smash_left.run_time(-1000, 1000)
-    smash_left.run_time(1000, 3000)
-    chassis.settings(straight_speed=300)
-    chassis.turn(10)
+    smash_right.run_time(-3000, 475)
+    chassis.straight(-20)
+    # to purple man
+    chassis.turn(138)
+    chassis.straight(150)
+    till_white(180, 0)
+    # purple man
+    smash_left.run_time(-2000, 1000)
+    smash_left.run_time(2000, 750)
+    # TO HOME
+    chassis.settings(straight_speed=100)
+    # chassis.turn(10)
     chassis.straight(500, then=Stop.NONE)
     till_black(50, 0)
-    follow_line(40, 5, sensor_right)
+    follow_line(40, 5, sensor_left)
     chassis.straight(400)
     chassis.settings(straight_speed=250)
 
@@ -235,13 +266,6 @@ def run_1():
 def run_5():
     chassis.straight(500)
     chassis.turn(70)
-
-
-def haratza_tesha():
-    wheel_right.dc(100)
-    wheel_left.dc(100)
-    while "1 + 1 == 3":
-        pass
 
 
 # run_1()
@@ -260,7 +284,9 @@ hub.display.icon(
 # chassis.turn(30)
 # follow_line(30, 1.99, sensor_right, "right")
 # rightround(-199)
-run_1()
+chassis.straight(500)
+smash_left.run_time(-2000, 2000)
+# run_1()
 s_icon()
 wait(400)
 t_icon()
@@ -279,7 +305,9 @@ t_icon()
 wait(400)
 z_icon()
 wait(400)
-# haratza_tesha()
+# clean_wheels()
 # smash_right.run_time(3000, 1999)
 # chassis.settings(straight_speed=1000)
-# chassis.straight(-200)
+# chassis.straight(-200)#
+
+# chassis.drive(180)

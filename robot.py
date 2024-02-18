@@ -5,6 +5,7 @@ from pybricks.parameters import Color, Direction, Port, Stop
 from pybricks.robotics import DriveBase
 from pybricks.tools import StopWatch
 from pybricks.tools import wait
+from pybricks.tools import hub_menu
 
 
 # setup
@@ -67,7 +68,7 @@ def duck():
 def till_black(speed, turn_rate):
     chassis.drive(speed, turn_rate)
 
-    while sensor_left.color() != Color.BLACK:
+    while sensor_left.reflection() > 9:
         print(sensor_left.color())
         pass
 
@@ -260,12 +261,11 @@ def run_1():
     till_black(50, 0)
     follow_line(40, 5, sensor_left)
     chassis.straight(400)
-    chassis.settings(straight_speed=250)
-
+    chassis.settings(straight_speed=250)`
 
 def run_5():
     chassis.straight(500)
-    chassis.turn(70)
+    chassis.turn(-70)
 
 
 # run_1()

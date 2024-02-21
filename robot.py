@@ -298,8 +298,6 @@ hub.display.icon(
 # rightround(-199)
 # chassis.straight(500)
 # smash_left.run_time(-2000, 2000)
-# chassis.straight(500)
-# smash_left.run_time(-2000, 2000)
 # run_1()
 smash_left.run_time(-3000, 3000)
 s_icon()

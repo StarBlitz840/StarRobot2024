@@ -273,13 +273,17 @@ def run_1():
     #  follow_line(40, 5, sensor_left)
     # chassis.straight(400)
     # chassis.settings(straight_speed=250)
-
+def run_2():
+    chassis.stra
+    smash_left.run_time(-3000, 2000)
+def run_3():
+    print('skibidi')
 def run_5():
     chassis.straight(500)
     chassis.turn(-70)
 
 
-run_1()
+# run_1()
 # run_1()
 
 
@@ -299,7 +303,28 @@ hub.display.icon(
 # chassis.straight(500)
 # smash_left.run_time(-2000, 2000)
 # run_1()
-smash_left.run_time(-3000, 3000)
+def stats():
+    precent = hub.battery.current() / 2100 * 100
+    print("battery: ", hub.battery.current(), "mAh")
+    print("battery: ", precent, "%")
+
+
+
+
+selected = hub_menu(1, 2, 3, 99, 9)
+
+
+if selected == 1:
+    run_1()
+elif selected == 2:
+    run_2()
+elif selected == 3:
+    run_3()
+elif selected == 99:
+    stats()
+elif selected == 9:
+    clean_wheels()
+
 s_icon()
 wait(400)
 t_icon()

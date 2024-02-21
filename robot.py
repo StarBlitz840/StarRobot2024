@@ -58,7 +58,7 @@ sensor_right.detectable_colors(colors)
 def turn_to(angle):
     start_angle = hub.imu.heading() % 360 #208
     deg_to_turn = (angle - start_angle) % 360 #242
-    
+    chassis.turn(deg_to_turn)
 
     
 def rightround(thing):
@@ -292,12 +292,16 @@ hub.display.icon(
         [0, 100, 100, 100, 0],
     ]
 )
+
 # chassis.turn(30)
 # follow_line(30, 1.99, sensor_right, "right")
 # rightround(-199)
 # chassis.straight(500)
 # smash_left.run_time(-2000, 2000)
+# chassis.straight(500)
+# smash_left.run_time(-2000, 2000)
 # run_1()
+smash_left.run_time(-3000, 3000)
 s_icon()
 wait(400)
 t_icon()

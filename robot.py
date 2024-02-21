@@ -245,36 +245,41 @@ def run_1():
     follow_line(30, 1.99, sensor_right, "right")
     follow_line_until_black(30, sensor_right, sensor_left)
     chassis.straight(45)
-    chassis.turn(-45)
+    chassis.turn(-70)
     chassis.settings(straight_speed=100)
-    follow_line(30, 0.4, sensor_right)
+    # follow_line(30, 0.4, sensor_right)
     # team mission
     smash_right.run_time(1000, 600)
-    chassis.straight(200, then=Stop.NONE)
+    chassis.straight(50, then=Stop.NONE)
     smash_right.run_time(-3000, 475)
-    chassis.straight(-20)
+    chassis.straight(-50)
     # to purple man
     chassis.turn(138)
-    chassis.straight(150)
-    till_white(180, 0)
+    chassis.settings(straight_speed=250)
+    chassis.straight(438)
+    # till_white(180, 0)
     # purple man
     smash_left.run_time(-2000, 1000)
     smash_left.run_time(2000, 750)
     # TO HOME
-    chassis.settings(straight_speed=100)
-    # chassis.turn(10)
-    chassis.straight(500, then=Stop.NONE)
-    till_black(50, 0)
-    follow_line(40, 5, sensor_left)
-    chassis.straight(400)
-    chassis.settings(straight_speed=250)`
+    chassis.settings(straight_speed=600)
+    chassis.straight(600)
+    chassis.turn(2)
+    # chassis.settings(turn_rate=25)
+    chassis.curve(450,90)
+    chassis.straight(300)
+    # chassis.curve(75) 
+    # till_black(50, 0)
+    #  follow_line(40, 5, sensor_left)
+    # chassis.straight(400)
+    # chassis.settings(straight_speed=250)
 
 def run_5():
     chassis.straight(500)
     chassis.turn(-70)
 
 
-# run_1()
+run_1()
 # run_1()
 
 
@@ -290,8 +295,8 @@ hub.display.icon(
 # chassis.turn(30)
 # follow_line(30, 1.99, sensor_right, "right")
 # rightround(-199)
-chassis.straight(500)
-smash_left.run_time(-2000, 2000)
+# chassis.straight(500)
+# smash_left.run_time(-2000, 2000)
 # run_1()
 s_icon()
 wait(400)

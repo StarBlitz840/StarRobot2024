@@ -280,20 +280,51 @@ def run_1():
 
 
 def run_2():
-    chassis.straight(400)
-    smash_right.run_time(1000, 2000)
-    wheel_left.run_time(1000, 900)
     chassis.straight(300)
-    smash_left.run_time(-3000, 3000)
+    smash_right.run_time(190 + 60, 2000)
+    chassis.straight(300)
+    wheel_right.run_time(1000, 1000)
+    smash_left.run_time(-3000, 5000)
 
 
 def run_3():
-    chassis.straight(3000)
+    chassis.settings(straight_speed=800)
+    chassis.straight(400)
+    chassis.settings(straight_speed=190 + 60)
+    till_black(199, 0)
+    wheel_right.run_time(1000, 800)
+    chassis.straight(40)
+    smash_left.run_time(4000, 1999)
+    wheel_right.run_time(-1000, 800)
+    chassis.settings(straight_speed=400)
+    chassis.straight(-1000)
+
+
+def run_4():
+    hub.speaker.play_notes(
+        [
+            "G4/4",
+            "C6/4",
+            "G5/4",
+            "C6/4",
+            "E6/2",
+            "G5/4",
+            "R/4",
+            "C6/4",
+            "B5/4",
+            "A5/4",
+            "G5/4",
+            "R/2",
+            "E6/4",
+            "C6/1",
+        ],
+        199,
+    )
 
 
 def run_5():
     chassis.straight(500)
-    chassis.turn(-70)
+    chassis.straight(-500)
 
 
 # run_1()
@@ -323,7 +354,7 @@ def stats():
     print("battery: ", precent, "%")
 
 
-selected = hub_menu(1, 2, 3, 99, 9)
+selected = hub_menu(1, 2, 3, 4, 5, 99, 9)
 
 
 if selected == 1:
@@ -332,6 +363,10 @@ elif selected == 2:
     run_2()
 elif selected == 3:
     run_3()
+elif selected == 4:
+    run_4()
+elif selected == 5:
+    run_5()
 elif selected == 99:
     stats()
 elif selected == 9:

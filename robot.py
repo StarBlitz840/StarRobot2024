@@ -55,12 +55,13 @@ sensor_right.detectable_colors(colors)
 #     if math < -180 and math < 0:
 #         chassis.turn(start_angle + angle)
 
+
 def turn_to(angle):
-    start_angle = hub.imu.heading() % 360 #208
-    deg_to_turn = (angle - start_angle) % 360 #242
+    start_angle = hub.imu.heading() % 360  # 208
+    deg_to_turn = (angle - start_angle) % 360  # 242
     chassis.turn(deg_to_turn)
 
-    
+
 def rightround(thing):
     chassis.straight(thing)
     thing = thing * -1
@@ -79,6 +80,8 @@ def till_black(speed, turn_rate):
         pass
 
     chassis.stop()
+
+
 def till_white(speed, turn_rate):
     chassis.drive(speed, turn_rate)
 
@@ -87,7 +90,6 @@ def till_white(speed, turn_rate):
         pass
 
     chassis.stop()
-
 
 
 def till_not_black(speed, turn_rate):
@@ -222,10 +224,12 @@ def follow_line_until_black(
         wheel_right.dc(speed + change)
         wheel_left.dc(speed - change)
 
+
 def clean_wheels():
     chassis.drive(720, 0)
     while "1 + 1 = 3":
         pass
+
 
 # code
 def run_1():
@@ -266,18 +270,27 @@ def run_1():
     chassis.straight(600)
     chassis.turn(2)
     # chassis.settings(turn_rate=25)
-    chassis.curve(450,90)
+    chassis.curve(450, 90)
     chassis.straight(300)
-    # chassis.curve(75) 
+    # chassis.curve(75)
     # till_black(50, 0)
     #  follow_line(40, 5, sensor_left)
     # chassis.straight(400)
     # chassis.settings(straight_speed=250)
+
+
 def run_2():
-    chassis.stra
-    smash_left.run_time(-3000, 2000)
+    chassis.straight(400)
+    smash_right.run_time(1000, 2000)
+    wheel_left.run_time(1000, 900)
+    chassis.straight(300)
+    smash_left.run_time(-3000, 3000)
+
+
 def run_3():
-    print('skibidi')
+    chassis.straight(3000)
+
+
 def run_5():
     chassis.straight(500)
     chassis.turn(-70)
@@ -297,6 +310,7 @@ hub.display.icon(
     ]
 )
 
+
 # chassis.turn(30)
 # follow_line(30, 1.99, sensor_right, "right")
 # rightround(-199)
@@ -307,8 +321,6 @@ def stats():
     precent = hub.battery.current() / 2100 * 100
     print("battery: ", hub.battery.current(), "mAh")
     print("battery: ", precent, "%")
-
-
 
 
 selected = hub_menu(1, 2, 3, 99, 9)

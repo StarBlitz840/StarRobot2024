@@ -80,6 +80,8 @@ def till_black(speed, turn_rate):
         pass
 
     chassis.stop()
+
+
 def till_black_right(speed, turn_rate):
     chassis.drive(speed, turn_rate)
 
@@ -299,42 +301,50 @@ def run_3():
     chassis.settings(straight_speed=190 + 60)
     till_black_right(199, 0)
     wheel_left.run_time(1000, 800)
-    chassis.straight(100)
-    smash_right.run_time(4000, 2400)
+    till_black(100, 0)
+    chassis.straight(10)
+    smash_right.run_time(4000, 2600)
     wheel_left.run_time(-1000, 900)
     chassis.settings(straight_speed=400)
     chassis.straight(-1000)
 
 
+def run_6():
+    chassis.straight(290)
+    smash_right.run_time(500, 700)
+    chassis.straight(-60)
+    chassis.turn(-60)
+    chassis.straight(-60)
+    smash_right.run_time(-100, 700)
+    chassis.turn(60)
+    chassis.straight(-500)
+
+
 def run_4():
-    hub.speaker.play_notes(
-        [
-            "G4/4",
-            "C6/4",
-            "G5/4",
-            "C6/4",
-            "E6/2",
-            "G5/4",
-            "R/4",
-            "C6/4",
-            "B5/4",
-            "A5/4",
-            "G5/4",
-            "R/2",
-            "E6/4",
-            "C6/1",
-        ],
-        199,
-    )
-
-
-def run_5():
     chassis.straight(500)
     chassis.straight(-500)
 
 
 # run_1()
 # run_1()
+def run_7():
+    chassis.straight(300)
+    chassis.straight(-50)
+    chassis.turn(90)
+    chassis.curve(199, 90, then=Stop.NONE)
+    chassis.straight(300)
+
+
+def run_5():
+    chassis.settings(straight_speed=700)
+    chassis.straight(850)
+    smash_left.run_time(180, 1999)
+    smash_left.run_time(-180, 1999)
+    chassis.settings(straight_speed=700)
+    chassis.straight(800)
+    chassis.settings(straight_speed=250)
+    chassis.turn(-90)
+    chassis.straight(100)
 
 
 hub.display.icon(
@@ -360,7 +370,7 @@ def stats():
     print("battery: ", precent, "%")
 
 
-selected = hub_menu(1, 2, 3, 4, 5, 99, 9)
+selected = hub_menu(1, 2, 3, 4, 5, 6, 7, 99, 9)
 
 
 if selected == 1:
@@ -373,6 +383,10 @@ elif selected == 4:
     run_4()
 elif selected == 5:
     run_5()
+elif selected == 6:
+    run_6()
+elif selected == 7:
+    run_7()
 elif selected == 99:
     stats()
 elif selected == 9:

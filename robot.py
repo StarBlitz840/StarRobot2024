@@ -80,6 +80,12 @@ def till_black(speed, turn_rate):
         pass
 
     chassis.stop()
+def till_black_right(speed, turn_rate):
+    chassis.drive(speed, turn_rate)
+
+    while sensor_right.reflection() > 9:
+        print(sensor_right.color())
+        pass
 
 
 def till_white(speed, turn_rate):
@@ -289,13 +295,13 @@ def run_2():
 
 def run_3():
     chassis.settings(straight_speed=800)
-    chassis.straight(400)
+    chassis.straight(700)
     chassis.settings(straight_speed=190 + 60)
-    till_black(199, 0)
-    wheel_right.run_time(1000, 800)
-    chassis.straight(40)
-    smash_left.run_time(4000, 1999)
-    wheel_right.run_time(-1000, 800)
+    till_black_right(199, 0)
+    wheel_left.run_time(1000, 800)
+    chassis.straight(100)
+    smash_right.run_time(4000, 2400)
+    wheel_left.run_time(-1000, 900)
     chassis.settings(straight_speed=400)
     chassis.straight(-1000)
 

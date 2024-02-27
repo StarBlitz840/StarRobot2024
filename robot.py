@@ -243,7 +243,7 @@ def clean_wheels():
 def run_1():
     # mixer
     chassis.settings(straight_speed=250)
-    chassis.straight(-300, then=Stop.NONE)
+    chassis.straight(-280, then=Stop.NONE)
     chassis.settings(straight_speed=80)
     chassis.straight(-150)
     chassis.straight(20)
@@ -257,11 +257,11 @@ def run_1():
     follow_line(30, 1.99, sensor_right, "right")
     follow_line_until_black(30, sensor_right, sensor_left)
     chassis.straight(45)
+    smash_right.run_time(1000, 600)
     chassis.turn(-70)
     chassis.settings(straight_speed=100)
     # follow_line(30, 0.4, sensor_right)
     # team mission
-    smash_right.run_time(1000, 600)
     chassis.straight(50, then=Stop.NONE)
     smash_right.run_time(-3000, 475)
     chassis.straight(-50)
@@ -275,11 +275,11 @@ def run_1():
     smash_left.run_time(2000, 750)
     # TO HOME
     chassis.settings(straight_speed=600)
-    chassis.straight(600)
+    chassis.straight(600,then= Stop.NONE)
     chassis.turn(2)
     # chassis.settings(turn_rate=25)
-    chassis.curve(450, 90)
-    chassis.straight(300)
+    chassis.curve(450, 90, then= Stop.NONE)
+    chassis.straight(500)
     # chassis.curve(75)
     # till_black(50, 0)
     #  follow_line(40, 5, sensor_left)
@@ -288,11 +288,12 @@ def run_1():
 
 
 def run_2():
-    chassis.straight(300)
+    chassis.straight(330)
     smash_right.run_time(190 + 60, 2000)
     chassis.straight(300)
     wheel_right.run_time(1000, 1000)
     smash_left.run_time(-3000, 5000)
+    chassis.straight(-1000)
 
 
 def run_3():
@@ -303,10 +304,10 @@ def run_3():
     wheel_left.run_time(1000, 800)
     till_black(100, 0)
     chassis.straight(10)
-    smash_right.run_time(4000, 2600)
+    smash_right.run_time(4000, 2400)
     wheel_left.run_time(-1000, 900)
     chassis.settings(straight_speed=400)
-    chassis.straight(-1000)
+    chassis.straight(-2000)
 
 
 def run_6():
@@ -317,22 +318,22 @@ def run_6():
     chassis.straight(-60)
     smash_right.run_time(-100, 700)
     chassis.turn(60)
-    chassis.straight(-500)
+    chassis.straight(-2000)
 
 
 def run_4():
     chassis.straight(500)
-    chassis.straight(-500)
+    chassis.straight(-2000)
 
 
 # run_1()
 # run_1()
 def run_7():
     chassis.straight(300)
-    chassis.straight(-50)
+    chassis.straight(-70)
     chassis.turn(90)
     chassis.curve(199, 90, then=Stop.NONE)
-    chassis.straight(300)
+    chassis.straight(500)
 
 
 def run_5():
@@ -389,13 +390,13 @@ elif selected == 2:
 elif selected == 3:
     run_3()
 elif selected == 4:
-    run_5()
-elif selected == 5:
-    run_7()
-elif selected == 6:
     run_4()
-elif selected == 7:
+elif selected == 5:
+    run_5()
+elif selected == 6:
     run_6()
+elif selected == 7:
+    run_7()
 elif selected == 8:
     run_8()
 elif selected == 99:

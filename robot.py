@@ -350,10 +350,12 @@ def run_5():
 
 def run_8():
     chassis.straight(-600)
-    wheel_right.run_time(180, 600)
+    wheel_right.run_time(180, 800)
     chassis.settings(straight_speed=700)
-    chassis.straight(-600)
-    chassis.straight(-600)
+    chassis.straight(-650)
+    chassis.straight(800)
+    wheel_left.run_time(500, 800)
+    chassis.straight(5000)
     chassis.settings(straight_speed=250)
 
 

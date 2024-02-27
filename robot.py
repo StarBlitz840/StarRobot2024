@@ -347,6 +347,15 @@ def run_5():
     chassis.straight(100)
 
 
+def run_8():
+    chassis.straight(-600)
+    wheel_right.run_time(180, 600)
+    chassis.settings(straight_speed=700)
+    chassis.straight(-600)
+    chassis.straight(-600)
+    chassis.settings(straight_speed=250)
+
+
 hub.display.icon(
     [
         [0, 100, 0, 100, 0],
@@ -370,7 +379,7 @@ def stats():
     print("battery: ", precent, "%")
 
 
-selected = hub_menu(1, 2, 3, 4, 5, 6, 7, 99, 9)
+selected = hub_menu(1, 2, 3, 4, 5, 6, 7, 8, 99, 9)
 
 
 if selected == 1:
@@ -380,13 +389,15 @@ elif selected == 2:
 elif selected == 3:
     run_3()
 elif selected == 4:
-    run_4()
-elif selected == 5:
     run_5()
-elif selected == 6:
-    run_6()
-elif selected == 7:
+elif selected == 5:
     run_7()
+elif selected == 6:
+    run_4()
+elif selected == 7:
+    run_6()
+elif selected == 8:
+    run_8()
 elif selected == 99:
     stats()
 elif selected == 9:

@@ -275,10 +275,10 @@ def run_1():
     smash_left.run_time(2000, 750)
     # TO HOME
     chassis.settings(straight_speed=600)
-    chassis.straight(600,then= Stop.NONE)
+    chassis.straight(600, then=Stop.NONE)
     chassis.turn(2)
     # chassis.settings(turn_rate=25)
-    chassis.curve(450, 90, then= Stop.NONE)
+    chassis.curve(450, 90, then=Stop.NONE)
     chassis.straight(500)
     # chassis.curve(75)
     # till_black(50, 0)
@@ -350,13 +350,15 @@ def run_5():
 
 def run_8():
     chassis.straight(-600)
-    wheel_right.run_time(180, 800)
     chassis.settings(straight_speed=700)
-    chassis.straight(-650)
+    chassis.curve(-630, 35)
+    chassis.straight(-200)
+    chassis.straight(200)
+    chassis.curve(630, 40)
     chassis.straight(800)
-    wheel_left.run_time(500, 800)
-    chassis.straight(5000)
-    chassis.settings(straight_speed=250)
+    # wheel_left.run_time(500, 800)
+    # chassis.straight(5000)
+    # chassis.settings(straight_speed=250)
 
 
 hub.display.icon(

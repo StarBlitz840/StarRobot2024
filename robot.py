@@ -301,13 +301,16 @@ def run_3():
     chassis.straight(700)
     chassis.settings(straight_speed=190 + 60)
     till_black_right(199, 0)
-    wheel_left.run_time(1000, 800)
+    chassis.straight(1)
+    smash_left.run_angle(700, 90)
+    smash_left.run_angle(700, 180)
+    wheel_left.run_angle(700, 370)
     till_black(100, 0)
-    chassis.straight(10)
+    # till_black(100, 0)
     smash_right.run_time(4000, 2400)
-    wheel_left.run_time(-1000, 900)
-    chassis.settings(straight_speed=400)
-    chassis.straight(-2000)
+    # wheel_left.run_time(-1000, 900)
+    # chassis.settings(straight_speed=400)
+    # chassis.straight(-2000)
 
 
 def run_6():
@@ -346,7 +349,6 @@ def run_5():
 
 
 def run_8():
-
     chassis.straight(-600)
     chassis.settings(straight_speed=700)
     chassis.curve(-630, 35)
@@ -394,6 +396,7 @@ def stats():
     precent = hub.battery.current() / 2100 * 100
     print("battery: ", hub.battery.current(), "mAh")
     print("battery: ", precent, "%")
+    # wheel_left.run_time(300, 1500)
 
 
 selected = hub_menu(1, 2, 3, 4, 5, 6, 7, 8, 99, 9)

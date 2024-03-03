@@ -329,11 +329,8 @@ def run_4():
 # run_1()
 # run_1()
 def run_7():
-    chassis.straight(300)
-    chassis.straight(-70)
-    chassis.turn(90)
-    chassis.curve(199, 90, then=Stop.NONE)
-    chassis.straight(500)
+    chassis.straight(100, then=Stop.NONE)
+    follow_line(50, 3, sensor_left, kp=1, side="left")
 
 
 def run_5():
@@ -349,13 +346,28 @@ def run_5():
 
 
 def run_8():
+
     chassis.straight(-600)
     chassis.settings(straight_speed=700)
     chassis.curve(-630, 35)
     chassis.straight(-200)
     chassis.straight(200)
-    chassis.curve(630, 40)
-    chassis.straight(800)
+    chassis.turn(30)
+    chassis.settings(straight_speed=250)
+    chassis.straight(-400)
+    chassis.straight(150)
+    chassis.turn(25)
+    chassis.straight(-200)
+    chassis.turn(-45)
+    chassis.turn(45)
+    chassis.settings(straight_speed=1000)
+    chassis.curve(1000, -36)
+    chassis.curve(1000, 30)
+    chassis.straight(500)
+    chassis.settings(straight_speed=250)
+
+    # chassis.curve(630, 40)
+    # chassis.straight(800)
     # wheel_left.run_time(500, 800)
     # chassis.straight(5000)
     # chassis.settings(straight_speed=250)

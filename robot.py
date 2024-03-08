@@ -57,12 +57,22 @@ sensor_right.detectable_colors(colors)
 
 
 def turn_to(angle):
-    start_angle = hub.imu.heading() % 360  # 208
+    print(hub.imu.heading())
+    start_angle = (hub.imu.heading() + 360) % 360  # 208
+    print(start_angle)
     deg_to_turn = (angle - start_angle) % 360  # 242
+    print(deg_to_turn)
+
     if deg_to_turn >= 180:
         chassis.turn(deg_to_turn - 360)
     else:
         chassis.turn(deg_to_turn)
+
+
+def turn_to_right(angle):
+    start_angle = hub.imu.heading() % 360  # 208
+    deg_to_turn = angle - start_angle % 360  # 242
+    chassis.turn(deg_to_turn)
 
 
 def rightround(thing):
@@ -309,7 +319,9 @@ def run_3():
     smash_left.run_angle(700, 180)
     wheel_left.run_time(700, 1000)
     chassis.straight(300)
-    smash_right.run_time(-4000, 2400)
+    chassis.settings(straight_speed=60)
+    chassis.straight(500, wait=False)
+    smash_right.run_angle(-4000, 2000)
     chassis.settings(straight_speed=800)
     chassis.straight(-100)
     chassis.turn(60)
@@ -338,7 +350,10 @@ def run_4():
     chassis.straight(50)
     turn_to(45)
     chassis.settings(straight_speed=190 + 60)
-    chassis.straight(300)
+    chassis.straight(300, wait=False)
+    wait(300)
+    smash_left.run_angle(180, -180)
+    smash_left.run_angle(180, 180, wait=False)
     chassis.straight(-200)
     chassis.curve(100, 120)
     chassis.straight(5000)
@@ -347,8 +362,12 @@ def run_4():
 # run_1()
 # run_1()
 def run_7():
-    chassis.straight(100, then=Stop.NONE)
-    follow_line(50, 3, sensor_left, kp=1, side="left")
+    chassis.straight(400)
+    chassis.straight(-50)
+    smash_left.run_time(700, 700)
+    chassis.settings(straight_speed=50)
+    chassis.straight(-300, wait=False)
+    smash_left.run_time(700, 700)
 
 
 def run_5():

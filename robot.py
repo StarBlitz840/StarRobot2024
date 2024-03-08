@@ -315,7 +315,6 @@ def run_3():
     chassis.turn(60)
     chassis.straight(-3000)
     chassis.settings(straight_speed=190 + 60)
-
     # wheel_left.run_time(-1000, 900)
     # chassis.settings(straight_speed=400)
     # chassis.straight(-2000)
@@ -341,6 +340,8 @@ def run_4():
     chassis.settings(straight_speed=190 + 60)
     chassis.straight(300)
     chassis.straight(-200)
+    chassis.curve(100, 120)
+    chassis.straight(5000)
 
 
 # run_1()

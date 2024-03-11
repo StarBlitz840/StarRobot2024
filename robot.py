@@ -297,20 +297,20 @@ def run_2():
 
 
 def run_3():
-    chassis.settings(straight_speed=800)
-    chassis.straight(700)
+    chassis.settings(straight_speed=600)
+    chassis.straight(670)
     chassis.settings(straight_speed=190 + 60)
     till_black_right(199, 0)
     chassis.straight(1)
     smash_left.run_angle(700, 90)
     smash_left.run_angle(700, 180)
     wheel_left.run_time(700, 900)
-    chassis.straight(200)
+    chassis.straight(300)
     smash_right.run_time(-4000, 2250)
     chassis.settings(straight_speed=800)
-    chassis.straight(-150)
+    chassis.straight(-125)
     chassis.turn(-90)
-    chassis.curve(850, 20)
+    chassis.straight(800)
     chassis.settings(straight_speed=190 + 60)
 
 

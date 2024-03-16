@@ -301,19 +301,21 @@ def run_1():
 
 
 def run_2():
-    chassis.settings(straight_speed=600)
+    smash_right.run_time(-250, 1000, wait=False)
+    chassis.settings(straight_speed=700)
     chassis.straight(320)
-    smash_right.run_time(190 + 60, 2000, wait=False)
+    smash_right.run_time(250, 600, wait=False)
     wait(100)
-    chassis.settings(straight_speed=600)
+    chassis.settings(straight_speed=700)
     chassis.straight(300)
     chassis.settings(straight_speed=250)
     chassis.straight(300, wait=False)
     smash_left.run_time(-3000, 2000)
+    chassis.settings(straight_speed=700)
     chassis.straight(-1000)
 
 
-def run_3():
+def run_4():
     chassis.settings(straight_speed=800)
     chassis.straight(700)
     chassis.settings(straight_speed=190 + 60)
@@ -343,7 +345,7 @@ def run_6():
     chassis.turn(50)
 
 
-def run_4():
+def run_3():
     chassis.settings(straight_speed=800)
     chassis.straight(250, then=Stop.NONE)
     till_black(200, -30)
@@ -354,35 +356,19 @@ def run_4():
     wait(300)
     smash_left.run_angle(180, -180)
     smash_left.run_angle(180, 180, wait=False)
+    chassis.settings(straight_speed=800)
     chassis.straight(-200)
-    chassis.curve(100, 120)
+    chassis.curve(100, 120, then=Stop.NONE)
     chassis.straight(5000)
 
 
 # run_1()
 # run_1()
-def run_7():
-    chassis.straight(400)
-    chassis.straight(-50)
-    smash_left.run_time(700, 700)
-    chassis.settings(straight_speed=50)
-    chassis.straight(-300, wait=False)
-    smash_left.run_time(700, 700)
+
+
 
 
 def run_5():
-    chassis.settings(straight_speed=700)
-    chassis.straight(850)
-    smash_left.run_time(180, 1999)
-    smash_left.run_time(-180, 1999)
-    chassis.settings(straight_speed=700)
-    chassis.straight(800)
-    chassis.settings(straight_speed=250)
-    chassis.turn(-90)
-    chassis.straight(100)
-
-
-def run_8():
     chassis.straight(-600)
     chassis.settings(straight_speed=700)
     chassis.curve(-630, 35)
@@ -433,7 +419,7 @@ def stats():
     # wheel_left.run_time(300, 1500)
 
 
-selected = hub_menu(1, 2, 3, 4, 5, 6, 7, 8, 99, 9)
+selected = hub_menu(1, 2, 3, 4, 5, 6, 99, 9)
 
 
 if selected == 1:
@@ -448,10 +434,6 @@ elif selected == 5:
     run_5()
 elif selected == 6:
     run_6()
-elif selected == 7:
-    run_7()
-elif selected == 8:
-    run_8()
 elif selected == 99:
     stats()
 elif selected == 9:

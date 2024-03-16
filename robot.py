@@ -301,11 +301,14 @@ def run_1():
 
 
 def run_2():
-    chassis.straight(330)
-    smash_right.run_time(190 + 60, 2000)
+    chassis.settings(straight_speed=600)
+    chassis.straight(320)
+    smash_right.run_time(190 + 60, 2000, wait=False)
+    wait(100)
+    chassis.settings(straight_speed=250)
     chassis.straight(300)
-    wheel_right.run_time(1000, 1000)
-    smash_left.run_time(-3000, 5000)
+    chassis.straight(300, wait=False)
+    smash_left.run_time(-3000, 2000)
     chassis.straight(-1000)
 
 

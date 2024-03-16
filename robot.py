@@ -255,7 +255,7 @@ def clean_wheels():
 # code
 def run_1():
     # mixer
-    chassis.settings(straight_speed=250)
+    chassis.settings(straight_speed=300)
     chassis.straight(-280, then=Stop.NONE)
     chassis.settings(straight_speed=80)
     chassis.straight(-150)
@@ -264,13 +264,13 @@ def run_1():
     chassis.turn(90)
     chassis.settings(turn_rate=100)
     chassis.settings(straight_speed=200)
-    till_black(30, 0)
+    till_black(80, 0)
     chassis.turn(30)
     # to team mission
-    follow_line(30, 1.99, sensor_right, "right")
+    follow_line(50, 1.5, sensor_right, "right")
     follow_line_until_black(30, sensor_right, sensor_left)
     chassis.straight(45)
-    smash_right.run_time(1000, 600)
+    smash_right.run_time(1000, 600, wait=False)
     chassis.turn(-70)
     chassis.settings(straight_speed=100)
     # follow_line(30, 0.4, sensor_right)
@@ -279,17 +279,17 @@ def run_1():
     smash_right.run_time(-3000, 475)
     chassis.straight(-50)
     # to purple man
+    chassis.settings(turn_rate=100)
     chassis.turn(138)
-    chassis.settings(straight_speed=250)
+    chassis.settings(straight_speed=700)
     chassis.straight(438)
     # till_white(180, 0)
     # purple man
     smash_left.run_time(-2000, 1000)
     smash_left.run_time(2000, 750)
     # TO HOME
-    chassis.settings(straight_speed=600)
+    chassis.settings(straight_speed=700)
     chassis.straight(600, then=Stop.NONE)
-    chassis.turn(2)
     # chassis.settings(turn_rate=25)
     chassis.curve(450, 90, then=Stop.NONE)
     chassis.straight(500)
@@ -305,8 +305,9 @@ def run_2():
     chassis.straight(320)
     smash_right.run_time(190 + 60, 2000, wait=False)
     wait(100)
-    chassis.settings(straight_speed=250)
+    chassis.settings(straight_speed=600)
     chassis.straight(300)
+    chassis.settings(straight_speed=250)
     chassis.straight(300, wait=False)
     smash_left.run_time(-3000, 2000)
     chassis.straight(-1000)
@@ -336,14 +337,10 @@ def run_3():
 
 
 def run_6():
-    chassis.straight(290)
-    smash_right.run_time(500, 700)
-    chassis.straight(-60)
-    chassis.turn(-60)
-    chassis.straight(-60)
-    smash_right.run_time(-100, 700)
-    chassis.turn(60)
-    chassis.straight(-2000)
+    chassis.straight(300)
+    chassis.settings(straight_speed=100)
+    chassis.straight(-100, wait=False)
+    chassis.turn(50)
 
 
 def run_4():

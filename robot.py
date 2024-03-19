@@ -338,7 +338,7 @@ def run_4():
     # chassis.straight(-2000)
 
 
-def run_6():
+def run_5():
     chassis.straight(300)
     chassis.settings(straight_speed=100)
     chassis.straight(-100, wait=False)
@@ -368,32 +368,22 @@ def run_3():
 
 
 
-def run_5():
-    chassis.straight(-600)
-    chassis.settings(straight_speed=700)
-    chassis.curve(-630, 35)
+def run_6():
+    chassis.settings(straight_speed=400)
+    chassis.curve(-3000, -10)
+    chassis.curve(-250, -80, then=Stop.NONE)
+    chassis.straight(-150, wait=False)
+    wait(500)
+    smash_right.run_time(300, 700)
     chassis.straight(-200)
-    chassis.straight(200)
+    chassis.curve(-100, 90)
+    chassis.straight(100)
+    chassis.curve(50, 50)
+    chassis.settings(straight_speed=100)
+    chassis.straight(-300)
+    chassis.straight(50)
     chassis.turn(30)
-    chassis.settings(straight_speed=250)
-    chassis.straight(-400)
-    chassis.straight(150)
-    chassis.turn(25)
-    chassis.straight(-200)
-    chassis.turn(-45)
-    chassis.turn(45)
-    chassis.settings(straight_speed=1000)
-    chassis.curve(1000, -36)
-    chassis.curve(1000, 30)
-    chassis.straight(500)
-    chassis.settings(straight_speed=250)
-
-    # chassis.curve(630, 40)
-    # chassis.straight(800)
-    # wheel_left.run_time(500, 800)
-    # chassis.straight(5000)
-    # chassis.settings(straight_speed=250)
-
+    chassis.curve(-300, 30)
 
 hub.display.icon(
     [
@@ -419,24 +409,24 @@ def stats():
     # wheel_left.run_time(300, 1500)
 
 
-selected = hub_menu(1, 2, 3, 4, 5, 6, 99, 9)
+selected = hub_menu("1", "2", "3", "4", "5", "6", 99, "9")
 
 
-if selected == 1:
+if selected == "1":
     run_1()
-elif selected == 2:
+elif selected == "2":
     run_2()
-elif selected == 3:
+elif selected == "3":
     run_3()
-elif selected == 4:
+elif selected == "4":
     run_4()
-elif selected == 5:
+elif selected == "5":
     run_5()
-elif selected == 6:
+elif selected == "6":
     run_6()
 elif selected == 99:
     stats()
-elif selected == 9:
+elif selected == "9":
     clean_wheels()
 
 s_icon()

@@ -15,8 +15,8 @@ WHITE = 42
 TARGET = 23
 
 hub = PrimeHub()
-smash_right = Motor(Port.D)
-smash_left = Motor(Port.E)
+arm_right = Motor(Port.D)
+arm_left = Motor(Port.E)
 wheel_right = Motor(Port.B)
 wheel_left = Motor(Port.F, Direction.COUNTERCLOCKWISE)
 sensor_right = ColorSensor(Port.A)
@@ -82,7 +82,7 @@ def rightround(thing):
 
 
 def duck():
-    smash_left.run_time(1000, 500)
+    arm_left.run_time(1000, 500)
 
 
 def till_black(speed, turn_rate):
@@ -270,13 +270,13 @@ def run_1():
     follow_line(50, 1.5, sensor_right, "right")
     follow_line_until_black(30, sensor_right, sensor_left)
     chassis.straight(45)
-    smash_right.run_time(1000, 600, wait=False)
+    arm_right.run_time(1000, 600, wait=False)
     chassis.turn(-70)
     chassis.settings(straight_speed=100)
     # follow_line(30, 0.4, sensor_right)
     # team mission
     chassis.straight(50, then=Stop.NONE)
-    smash_right.run_time(-3000, 475)
+    arm_right.run_time(-3000, 475)
     chassis.straight(-50)
     # to purple man
     chassis.settings(turn_rate=100)
@@ -285,8 +285,8 @@ def run_1():
     chassis.straight(438)
     # till_white(180, 0)
     # purple man
-    smash_left.run_time(-2000, 1000)
-    smash_left.run_time(2000, 750)
+    arm_left.run_time(-2000, 1000)
+    arm_left.run_time(2000, 750)
     # TO HOME
     chassis.settings(straight_speed=700)
     chassis.straight(600, then=Stop.NONE)
@@ -301,16 +301,16 @@ def run_1():
 
 
 def run_2():
-    smash_right.run_time(-250, 1000, wait=False)
+    arm_right.run_time(-250, 1000, wait=False)
     chassis.settings(straight_speed=700)
     chassis.straight(320)
-    smash_right.run_time(250, 600, wait=False)
+    arm_right.run_time(250, 600, wait=False)
     wait(100)
     chassis.settings(straight_speed=700)
     chassis.straight(300)
     chassis.settings(straight_speed=250)
     chassis.straight(300, wait=False)
-    smash_left.run_time(-3000, 2000)
+    arm_left.run_time(-3000, 2000)
     chassis.settings(straight_speed=700)
     chassis.straight(-1000)
 
@@ -321,13 +321,13 @@ def run_4():
     chassis.settings(straight_speed=190 + 60)
     till_black_right(199, 0)
     chassis.straight(1)
-    smash_left.run_angle(700, 90)
-    smash_left.run_angle(700, 180)
+    arm_left.run_angle(700, 90)
+    arm_left.run_angle(700, 180)
     wheel_left.run_time(700, 1000)
     chassis.straight(300)
     chassis.settings(straight_speed=60)
     chassis.straight(500, wait=False)
-    smash_right.run_angle(-4000, 2000)
+    arm_right.run_angle(-4000, 2000)
     chassis.settings(straight_speed=800)
     chassis.straight(-100)
     chassis.turn(60)
@@ -354,8 +354,8 @@ def run_3():
     chassis.settings(straight_speed=190 + 60)
     chassis.straight(300, wait=False)
     wait(300)
-    smash_left.run_angle(180, -180)
-    smash_left.run_angle(180, 180, wait=False)
+    arm_left.run_angle(180, -180)
+    arm_left.run_angle(180, 180, wait=False)
     chassis.settings(straight_speed=800)
     chassis.straight(-200)
     chassis.curve(100, 120, then=Stop.NONE)
@@ -374,7 +374,7 @@ def run_6():
     chassis.curve(-250, -80, then=Stop.NONE)
     chassis.straight(-150, wait=False)
     wait(500)
-    smash_right.run_time(300, 700)
+    arm_right.run_time(300, 700)
     chassis.straight(-200)
     chassis.curve(-100, 90)
     chassis.straight(100)

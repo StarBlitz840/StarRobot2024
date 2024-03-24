@@ -47,7 +47,7 @@ sensor_right.detectable_colors(colors)
 #     math = angle - start_angle
 #     chassis.settings(turn_acceleration=speed)
 #     if math < 180 and math > 0:
-#         chassis.turn(start_angle + angle)
+#         chassis.turn(start_angle + angle)``
 #     if math > -180 and math < 0:
 #         chassis.turn(start_angle - angle)
 #     if math > 180 and math > 0:
@@ -341,9 +341,14 @@ def run_4():
 def run_5():
     chassis.settings(straight_speed=300)
     chassis.straight(-300)
-    chassis.straight(100)
-    chassis.straight(-100)
-    chassis.straight(500)
+    chassis.straight(20)
+    chassis.settings(turn_rate=900)
+    chassis.turn(70, wait=False)
+    wait(400)
+    chassis.curve(800, 90)
+    chassis.straight(1)
+    wait(5000)
+
 
 
 def run_3():
@@ -384,7 +389,10 @@ def run_6():
     chassis.turn(30)
     chassis.curve(-300, 30)
 
-
+def run_7():
+    chassis.straight(300)
+    arm_right.run_time(-400, 2000)
+    chassis.straight(-100)
 hub.display.icon(
     [
         [0, 100, 0, 100, 0],
@@ -409,7 +417,7 @@ def stats():
     # wheel_left.run_time(300, 1500)
 
 
-selected = hub_menu("1", "2", "3", "4", "5", "6", 99, "9")
+selected = hub_menu("1", "2", "3", "4", "5", "6", "7", 99, "9")
 
 
 if selected == "1":
@@ -424,6 +432,8 @@ elif selected == "5":
     run_5()
 elif selected == "6":
     run_6()
+elif selected == "7":
+    run_7()
 elif selected == 99:
     stats()
 elif selected == "9":

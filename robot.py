@@ -339,10 +339,11 @@ def run_4():
 
 
 def run_5():
-    chassis.straight(300)
-    chassis.settings(straight_speed=100)
-    chassis.straight(-100, wait=False)
-    chassis.turn(50)
+    chassis.settings(straight_speed=300)
+    chassis.straight(-300)
+    chassis.straight(100)
+    chassis.straight(-100)
+    chassis.straight(500)
 
 
 def run_3():
@@ -366,8 +367,6 @@ def run_3():
 # run_1()
 
 
-
-
 def run_6():
     chassis.settings(straight_speed=400)
     chassis.curve(-3000, -10)
@@ -384,6 +383,7 @@ def run_6():
     chassis.straight(50)
     chassis.turn(30)
     chassis.curve(-300, 30)
+
 
 hub.display.icon(
     [

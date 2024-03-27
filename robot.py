@@ -267,10 +267,10 @@ def run_1():
     till_black(80, 0)
     chassis.turn(30)
     # to team mission
-    follow_line(50, 1.5, sensor_right, "right")
+    follow_line(40, 1.5, sensor_right, "right")
     follow_line_until_black(30, sensor_right, sensor_left)
-    chassis.straight(45)
     arm_right.run_time(1000, 600, wait=False)
+    chassis.straight(45)
     chassis.turn(-70)
     chassis.settings(straight_speed=100)
     # follow_line(30, 0.4, sensor_right)
@@ -282,14 +282,17 @@ def run_1():
     chassis.settings(turn_rate=100)
     chassis.turn(138)
     chassis.settings(straight_speed=700)
+    chassis.settings(turn_rate=50)
+    chassis.turn(50, wait=False)
     chassis.straight(438)
+    chassis.settings(turn_rate=100)
     # till_white(180, 0)
     # purple man
     arm_left.run_time(-2000, 1000)
     arm_left.run_time(2000, 750)
     # TO HOME
     chassis.settings(straight_speed=700)
-    chassis.straight(600, then=Stop.NONE)
+    chassis.straight(560, then=Stop.NONE)
     # chassis.settings(turn_rate=25)
     chassis.curve(450, 90, then=Stop.NONE)
     chassis.straight(500)
@@ -351,7 +354,6 @@ def run_5():
     wait(5000)
 
 
-
 def run_3():
     chassis.settings(straight_speed=800)
     chassis.straight(250, then=Stop.NONE)
@@ -390,10 +392,13 @@ def run_6():
     chassis.turn(30)
     chassis.curve(-300, 30)
 
+
 def run_7():
     chassis.straight(300)
     arm_right.run_time(-400, 2000)
     chassis.straight(-100)
+
+
 hub.display.icon(
     [
         [0, 100, 0, 100, 0],
